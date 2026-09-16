@@ -3,7 +3,7 @@
 ## Integrantes
 * Nicolas Llosas - 105397 - [Email](mailto:nllosas@fi.uba.ar)
 * Joaquín Acevedo - 89863 - [Email](mailto:racevedo@fi.uba.ar)
-* Juan David Chaparro - 111481Padron/Legajo - [Email](mailto:jchaparro@fi.uba.ar)
+* Juan David Chaparro - 111481 - [Email](mailto:jchaparro@fi.uba.ar)
 
 
 ---
@@ -26,13 +26,14 @@ La estructura del repositorio incluye:
 * `verificar.py`: verificación del algoritmo contra los casos y resultados esperados provistos por la cátedra.
 * `mediciones.py`: mediciones de tiempos para distintos tamaños de entrada, ajuste por cuadrados mínimos y generación de gráficos.
 * `prueba_exhaustiva.py`: prueba exhaustiva de todas las permutaciones de los valores `1, ..., n` para `2 <= n <= 8`.
+* `variabilidad.py`: experimento de cómo afecta la variabilidad de los valores al margen con el que gana Sophia.
 * `casos_catedra/`: Carpeta con sets de datos de prueba provistos por la cátedra.
 
 ---
 
 ## Instrucciones de ejecucion
 
-El programa está desarrollado en Python 3. La ejecución principal de `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
+El programa está desarrollado en Python 3. La ejecución principal de `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` y `variabilidad.py` se utilizan las librerías `numpy` y `matplotlib`.
 
 ### Opción rápida: copiar y ejecutar todo junto
 
@@ -129,6 +130,18 @@ El script genera los archivos:
 * `grafico_b_tiempo_vs_varianza.png`: tiempo según la variabilidad de los valores, manteniendo `n` fijo.
 * `grafico_c_tiempo_vs_magnitud.png`: tiempo según la magnitud de los valores, manteniendo `n` fijo.
 
+### Ejecutar el experimento de variabilidad contra optimalidad
+
+El enunciado pide analizar si la variabilidad de los valores afecta la optimalidad del algoritmo. Como óptimo acá quiere decir asegurar la victoria, lo que se mide es el margen: qué fracción del total se lleva Sophia. Se fija `n = 200`, se generan monedas al azar alrededor de 1000 con dispersión creciente, y se promedian 100 instancias por punto:
+
+```bash
+python3 variabilidad.py
+```
+
+Genera `grafico_d_margen_vs_varianza.png`: margen de Sophia según el desvío estándar de los valores.
+
+Lo que sale: con dispersión 0 (todas las monedas iguales) el margen es exactamente 0.5, o sea empate, que es el caso que el enunciado permite descartar. Con dispersión 1 ya no hubo ningún empate en las 100 instancias. De ahí en adelante el margen crece casi linealmente con el desvío, hasta 0.707 con valores entre 1 y 1999. La variabilidad no cambia si Sophia gana, que está garantizado, sino cuánto gana. Probamos también con `n = 1000` y la curva es la misma.
+
 ### Formato de los archivos
 
 #### Archivo de Entrada (`entrada.txt`)
@@ -176,4 +189,5 @@ Luego, ejecutar:
 
 ```bash
 python3 mediciones.py
+python3 variabilidad.py
 ```
