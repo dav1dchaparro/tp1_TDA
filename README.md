@@ -25,12 +25,50 @@ La estructura del repositorio incluye:
 
 ## 🚀 Instrucciones de Ejecución
 
-El programa está desarrollado en **Python 3** y no requiere la instalación de dependencias externas para su ejecución principal.
+El programa está desarrollado en **Python 3**. La ejecución principal de `monedas.py`, `pruebas.py` y `verificar.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
+
+### Opción rápida: copiar y ejecutar todo junto
+
+Se pueden ejecutar estos comandos directamente:
+
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install matplotlib numpy
+
+o bien, por separado, según:
+
+### Crear y activar el entorno virtual
+
+Desde la raíz del repositorio, crear el entorno virtual con:
+
+```bash
+python3 -m venv .venv
+```
+
+Activarlo con:
+
+```bash
+source .venv/bin/activate
+```
+
+Con el entorno virtual activado, instalar las dependencias necesarias para las mediciones y los gráficos:
+
+```bash
+python -m pip install matplotlib numpy
+```
+
+`matplotlib` se utiliza para generar los gráficos de las mediciones de tiempo, mientras que `numpy` se utiliza para los cálculos numéricos y los ajustes por cuadrados mínimos.
+
+Cuando se termine de trabajar en el proyecto, el entorno virtual puede desactivarse con:
+
+```bash
+deactivate
+```
 
 Para ejecutar el algoritmo utilizando un archivo de entrada con el set de monedas, corra el siguiente comando desde la raíz del repositorio:
 
 ```bash
-python3 tp1.py ruta/a/entrada.txt
+python monedas.py ruta/a/entrada.txt
 ```
 
 ### 📂 Formato de los Archivos
