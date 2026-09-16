@@ -111,25 +111,22 @@ El script genera los archivos:
 ### 📂 Formato de los Archivos
 
 #### Archivo de Entrada (`entrada.txt`)
-El archivo de entrada debe contener los valores de las monedas separados por comas o por espacios en una única línea:
+El archivo de entrada debe contener los valores de las monedas separados por punto y coma (`;`). También pueden incluirse líneas de comentario que comiencen con `#`.
+
 ```text
-10, 25, 5, 1, 8, 20
+10;25;5;1;8;20
 ```
 
 #### Formato de la Salida por Consola
-El programa imprimirá de forma cronológica cada una de las decisiones tomadas por Sophia (tanto para ella como para Mateo), finalizando con el recuento total de los puntajes:
-```text
-Sophia elige extremo izquierdo (Paridad): 10
-Sophia obliga a Mateo a elegir extremo derecho: 20
-Sophia elige extremo izquierdo (Paridad): 25
-Sophia obliga a Mateo a elegir extremo izquierdo: 5
-Sophia elige extremo derecho (Paridad): 8
-Sophia obliga a Mateo a elegir extremo izquierdo: 1
+El programa imprimirá de forma cronológica cada una de las decisiones tomadas por Sophia (tanto para ella como para Mateo), junto con las monedas y ganancias finales de ambos jugadores:
 
---- Resultado Final ---
-Resultado Sophia: 43
-Resultado Mateo: 26
-Ganadora: Sophia
+```text
+entrada.txt
+Última moneda para Sophia; Primera moneda para Mateo; Última moneda para Sophia; Primera moneda para Mateo; Última moneda para Sophia; Primera moneda para Mateo
+Monedas de Sophia: [20, 8, 25]
+Monedas de Mateo: [10, 5, 1]
+Ganancia de Sophia: 53
+Ganancia de Mateo: 16
 ```
 
 ---
