@@ -7,10 +7,8 @@ def prueba_exhaustiva(n_min=2, n_max=8):
     empates_general = 0
     derrotas_general = 0
 
-    print("Verificación exhaustiva del algoritmo Greedy")
-    print("=" * 72)
-    print(f"{'n':>3} | {'Casos':>10} | {'Victorias':>10} | {'Empates':>8} | {'Derrotas':>9}")
-    print("-" * 72)
+    print("Prueba exhaustiva de todas las permutaciones de 1..n")
+    print()
 
     for n in range(n_min, n_max + 1):
         valores = list(range(1, n + 1))
@@ -45,30 +43,29 @@ def prueba_exhaustiva(n_min=2, n_max=8):
         empates_general += empates
         derrotas_general += derrotas
 
-        print(
-            f"{n:>3} | {total:>10} | {victorias:>10} | "
-            f"{empates:>8} | {derrotas:>9}"
-        )
+        print("n = %d: %d casos, %d victorias, %d empates, %d derrotas" % (
+            n, total, victorias, empates, derrotas))
 
         # Si apareciera un contraejemplo, lo mostramos.
         if primer_empate is not None:
             p, s, m = primer_empate
-            print(f"    Primer empate encontrado: {p} -> Sophia={s}, Mateo={m}")
+            print("    Primer empate encontrado:", p, "Sophia =", s, "Mateo =", m)
 
         if primera_derrota is not None:
             p, s, m = primera_derrota
-            print(f"    Primera derrota encontrada: {p} -> Sophia={s}, Mateo={m}")
+            print("    Primera derrota encontrada:", p, "Sophia =", s, "Mateo =", m)
 
-    print("-" * 72)
-    print(f"Total de configuraciones probadas: {total_general}")
-    print(f"Victorias de Sophia:             {victorias_general}")
-    print(f"Empates:                         {empates_general}")
-    print(f"Derrotas de Sophia:              {derrotas_general}")
+    print()
+    print("Total de configuraciones probadas: %d" % total_general)
+    print("Victorias de Sophia: %d" % victorias_general)
+    print("Empates: %d" % empates_general)
+    print("Derrotas de Sophia: %d" % derrotas_general)
+    print()
 
     if empates_general == 0 and derrotas_general == 0:
-        print("\nRESULTADO: Sophia ganó en todos los casos probados.")
+        print("Sophia gano en todos los casos probados.")
     else:
-        print("\nRESULTADO: Se encontraron casos en los que Sophia no ganó.")
+        print("Se encontraron casos en los que Sophia no gano.")
 
 
 if __name__ == "__main__":
