@@ -1,4 +1,4 @@
-# Trabajo Práctico 1: Los Algoritmos Greedy son juegos de niños
+# Trabajo Practico 1: Los Algoritmos Greedy son juegos de niños
 
 ## Integrantes
 * Nicolas Llosas - 105397 - [Email](mailto:nllosas@fi.uba.ar)
@@ -7,39 +7,43 @@
 
 ---
 
-## Descripción del Proyecto
+## De que se trata
 
-Este proyecto contiene la resolución del **Trabajo Práctico 1** de la materia. El objetivo es analizar, demostrar e implementar un **Algoritmo Greedy** óptimo para resolver el problema de la fila de monedas entre Sophia y Mateo.
+El TP es un juego entre Sophia y su hermano Mateo. Hay una fila de monedas con distintos valores. En cada turno un jugador saca una moneda, pero solo puede sacar la primera o la ultima de la fila. Empieza Sophia, despues Mateo, y asi se van turnando hasta que no quedan monedas. Gana el que junta mas valor. Sophia juega por los dos, o sea que tambien decide que moneda le toca a Mateo, y tiene que asegurarse de ganar.
 
-Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo implementado utiliza la siguiente regla Greedy: **en su propio turno Sophia elige el mayor de los dos extremos disponibles y, en el turno de Mateo, le asigna el menor de los dos extremos disponibles**.
+La regla greedy que usamos es simple:
 
-Esta estrategia garantiza que Sophia **nunca pierda**, sin necesidad de ninguna hipótesis sobre los valores de las monedas. Si además los valores son distintos entre sí, como plantea el enunciado, la victoria es **estricta**. La distinción es relevante en la práctica: los casos de prueba más grandes provistos por la cátedra tienen muchos valores repetidos (`20000.txt` contiene 20.000 monedas que toman solamente 991 valores distintos), de modo que allí aplica el resultado general y no el estricto. Sophia gana igual en los siete casos.
+* En el turno de Sophia, se queda con la punta mas grande.
+* En el turno de Mateo, le da la punta mas chica.
 
-Con n par y valores repetidos puede haber empate. Algunos empates son inevitables para cualquier estrategia: la familia `x; y; ...; y; x` con n par y x <= y, que incluye el caso de monedas todas iguales que el enunciado permite descartar. Otros sí serían evitables, por ejemplo `1;2;3;3;2;1`, donde el algoritmo termina 6 a 6 y existe un reparto 7 a 5.
+Con esta regla Sophia nunca pierde. Si ademas los valores son todos distintos, como dice el enunciado, gana siempre. Si hay valores repetidos y la cantidad de monedas es par puede haber empate. Por ejemplo, si la cantidad de monedas es par y todas valen lo mismo, siempre empatan, sin importar como se juegue, y por eso el enunciado descarta ese caso.
 
-Es importante señalar que *ganar* y *obtener el máximo posible* son objetivos distintos, y el algoritmo cumple el primero. Por ejemplo, con la instancia `[10, 2, 5, 20, 50]` la regla le asigna a Sophia un total de 75 contra 12 de Mateo, cuando el máximo alcanzable para ella sería 80. El informe desarrolla este punto.
-
-La estructura del repositorio incluye:
-
-* `tp1.py`: implementación principal del algoritmo Greedy y lectura de los archivos de entrada.
-* `tp1`: ejecutable que llama a `tp1.py`, para poder correr `./tp1 entrada.txt`.
-* `pruebas.py`: pruebas de las propiedades demostradas en el informe, sobre instancias aleatorias, más casos borde y los contraejemplos que el informe cita.
-* `verificar.py`: verificación del algoritmo contra los casos y resultados esperados provistos por la cátedra.
-* `prueba_exhaustiva.py`: prueba exhaustiva de todas las permutaciones de los valores `1, ..., n` para `2 <= n <= 8`.
-* `mediciones.py`: mediciones de tiempos, ajuste por cuadrados mínimos y generación de gráficos.
-* `variabilidad.py`: experimento de cómo afecta la variabilidad de los valores al margen con el que gana Sophia.
-* `informe.pdf`: informe académico autocontenido con el análisis, la demostración de optimalidad y los análisis de complejidad temporal y espacial.
-* `casos_catedra/`: sets de datos de prueba provistos por la cátedra.
+Ganar no es lo mismo que sacar lo maximo posible. El algoritmo asegura ganar, pero no siempre le da a Sophia la mayor ganancia que podria sacar. Por ejemplo, con las monedas `10;2;5;20;50` Sophia saca 75 y Mateo 12, pero jugando distinto Sophia podria llegar a 80. En el informe se explica esto con mas detalle.
 
 ---
 
-## Instrucciones de ejecucion
+## Archivos del repositorio
 
-El programa está desarrollado en **Python 3**. La ejecución de `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` **no requiere dependencias externas**. Únicamente `mediciones.py` y `variabilidad.py` necesitan `numpy` y `matplotlib`.
+* `tp1.py`: el algoritmo y la lectura del archivo de entrada.
+* `tp1`: ejecutable que llama a `tp1.py`, para poder correr `./tp1 entrada.txt`.
+* `pruebas.py`: pruebas con monedas al azar y casos borde.
+* `verificar.py`: corre los casos de la catedra y compara con los resultados esperados.
+* `prueba_exhaustiva.py`: prueba todas las permutaciones de `1, ..., n` con `n` entre 2 y 8.
+* `mediciones.py`: mide tiempos, ajusta por cuadrados minimos y genera los graficos.
+* `variabilidad.py`: mide como cambia el margen de Sophia segun la variabilidad de los valores.
+* `TP1___Teoria_de_algoritmos_2c_2026.pdf`: el informe del TP.
+* `casos_catedra/`: los casos de prueba que dio la catedra.
+* `Resultados Esperados.txt`: los resultados de la catedra para esos casos.
 
-### Preparar el entorno (solo necesario para las mediciones)
+---
 
-Desde la raíz del repositorio:
+## Como ejecutar
+
+Todo esta hecho en Python 3. Para correr `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no hace falta instalar nada. Para `mediciones.py` y `variabilidad.py` hacen falta `numpy` y `matplotlib`.
+
+### Preparar el entorno (solo para `mediciones.py` y `variabilidad.py`)
+
+Desde la carpeta del repositorio:
 
 ```bash
 python3 -m venv .venv
@@ -47,91 +51,91 @@ source .venv/bin/activate
 python3 -m pip install matplotlib numpy
 ```
 
-`matplotlib` se utiliza para generar los gráficos y `numpy` para los cálculos numéricos y los ajustes por cuadrados mínimos. Al terminar, el entorno virtual puede desactivarse con `deactivate`.
+Al terminar, se sale del entorno con `deactivate`.
 
-### Ejecutar el algoritmo principal
-
-Para ejecutar el algoritmo con uno o más archivos de entrada:
+### Correr el algoritmo
 
 ```bash
 python3 tp1.py ruta/a/entrada.txt
 ```
 
-También puede usarse el ejecutable, que hace lo mismo:
+O con el ejecutable, que hace lo mismo:
 
 ```bash
 ./tp1 ruta/a/entrada.txt
 ```
 
-También pueden indicarse varios archivos:
+Se pueden pasar varios archivos a la vez:
 
 ```bash
-python3 tp1.py entrada1.txt entrada2.txt entrada3.txt
+python3 tp1.py entrada1.txt entrada2.txt
 ```
 
-### Ejecutar las pruebas
+### Correr las pruebas
 
 ```bash
 python3 pruebas.py
 ```
 
-### Verificar los casos provistos por la cátedra
+### Verificar los casos de la catedra
 
-El script recibe como argumento la carpeta que contiene los archivos `20.txt`, `25.txt`, `50.txt`, `100.txt`, `1000.txt`, `10000.txt` y `20000.txt`. Además lee `Resultados Esperados.txt` de la raíz del repositorio (o el archivo que se pase como segundo argumento) y compara contra la cátedra tanto la ganancia de Sophia como la lista de movimientos, turno por turno. Hay que correrlo desde la raíz:
+Hay que correrlo desde la carpeta del repositorio. Recibe la carpeta con los archivos `20.txt`, `25.txt`, `50.txt`, `100.txt`, `1000.txt`, `10000.txt` y `20000.txt`. Lee `Resultados Esperados.txt` y compara la ganancia de Sophia y los movimientos, uno por uno, con los de la catedra. Si se quiere usar otro archivo de resultados se pasa como segundo argumento.
 
 ```bash
 python3 verificar.py casos_catedra
 ```
 
-Imprime una tabla con la ganancia de cada jugador en cada caso y comprueba que Sophia gane en todos.
+Muestra una tabla con una fila por caso: cuantas monedas tiene, la ganancia de cada jugador, si Sophia gano, si su ganancia es igual a la de la catedra y si los movimientos son iguales. Al final dice si Sophia gano en los 7 casos y en cuantos coincidieron los movimientos.
 
-### Ejecutar la prueba exhaustiva
+### Correr la prueba exhaustiva
 
-Genera todas las permutaciones de los valores `1, ..., n` para `n` entre 2 y 8 y verifica que Sophia gane en cada una. Al ser permutaciones los valores son distintos, de modo que corresponde el caso estricto del teorema:
+Genera todas las permutaciones de `1, ..., n` con `n` de 2 a 8 y se fija que Sophia gane en todas. Como son permutaciones, los valores son todos distintos.
 
 ```bash
 python3 prueba_exhaustiva.py
 ```
 
-### Ejecutar las mediciones
+### Correr las mediciones
 
 ```bash
 python3 mediciones.py
 ```
 
-El script genera los archivos:
+Para las mediciones no hay archivos de casos: el mismo script arma las monedas al azar con una semilla fija, asi que siempre salen las mismas. Genera tres graficos:
 
-* `grafico_a.png`: tiempo de ejecución según la cantidad de monedas.
-* `grafico_b.png`: tiempo según la varianza de los valores dentro de una instancia, con `n` fijo.
-* `grafico_c.png`: tiempo según la magnitud de los valores entre instancias, con `n` fijo.
+* `grafico_a.png`: tiempo segun la cantidad de monedas.
+* `grafico_b.png`: tiempo segun la varianza de los valores, con `n` fijo.
+* `grafico_c.png`: tiempo segun que tan grandes son los valores, con `n` fijo.
 
-### Ejecutar el experimento de variabilidad contra optimalidad
+Los graficos ya estan subidos al repo, asi que no hace falta correr el script para verlos.
 
-El enunciado pide analizar si la variabilidad de los valores afecta la optimalidad del algoritmo. Como óptimo acá quiere decir asegurar la victoria, lo que se mide es el margen: qué fracción del total se lleva Sophia. Se fija `n = 200`, se generan monedas al azar alrededor de 1000 con dispersión creciente, y se promedian 100 instancias por punto:
+### Correr el experimento de variabilidad
+
+El enunciado pide ver si la variabilidad de los valores afecta al algoritmo. Como el algoritmo nunca pierde, lo que medimos es por cuanto gana: que parte del total se lleva Sophia. Se usan 200 monedas con valores al azar alrededor de 1000. Se prueba con una dispersion cada vez mas grande. Para cada dispersion se arman 100 filas de monedas al azar y se promedia el resultado.
 
 ```bash
 python3 variabilidad.py
 ```
 
-Genera `grafico_d.png`: margen de Sophia según el desvío estándar de los valores.
+Genera `grafico_d.png`, que muestra el margen de Sophia segun el desvio estandar de los valores. Tambien esta subido al repo.
 
-Lo que sale: con dispersión 0 (todas las monedas iguales) el margen es exactamente 0.5, o sea empate, que es el caso que el enunciado permite descartar. Con dispersión 1 ya no hubo ningún empate en las 100 instancias. De ahí en adelante el margen crece casi linealmente con el desvío, hasta 0.707 con valores entre 1 y 1999. La variabilidad no cambia si Sophia gana, que está garantizado, sino cuánto gana. Probamos también con `n = 1000` y la curva es la misma.
+Lo que se ve: con dispersion 0 todas las monedas son iguales y el margen es 0.5, o sea empate. Con dispersion 1 ya no hubo ningun empate en las 100 filas. Despues el margen crece casi en linea recta con el desvio, hasta 0.707 con valores entre 1 y 1999. La variabilidad no cambia si Sophia gana, sino por cuanto gana. Si se cambia `n` a 1000 en el codigo, la curva sale igual.
 
 ---
 
-## Formato de los Archivos
+## Formato de los archivos
 
-### Archivo de Entrada
+### Entrada
 
-El archivo de entrada debe contener los valores de las monedas separados por punto y coma (`;`). Pueden incluirse líneas de comentario que comiencen con `#`, como las que traen los archivos de la cátedra.
+Es un archivo de texto con los valores de las monedas separados por punto y coma. Las lineas que empiezan con `#` se ignoran, como las que traen los archivos de la catedra.
 
 ```text
 10;25;5;1;8;20
 ```
 
-### Formato de la Salida por Consola
+### Salida
 
-El programa imprime cronológicamente cada una de las decisiones tomadas por Sophia, tanto para ella como para Mateo, junto con las monedas y ganancias finales de ambos jugadores:
+El programa imprime primero el nombre del archivo que se le paso. Despues imprime en orden cada decision de Sophia, para ella y para Mateo, y al final las monedas y la ganancia de cada uno. Si se pasan varios archivos, deja una linea en blanco entre uno y otro:
 
 ```text
 entrada.txt
@@ -142,33 +146,13 @@ Ganancia de Sophia: 55
 Ganancia de Mateo: 14
 ```
 
-Las etiquetas `Primera` y `Última` indican de qué extremo de la fila **vigente** se retira cada moneda, no la posición en el arreglo original. Cuando los dos extremos tienen el mismo valor se toma el último; la elección es indistinta para el resultado, pero se fija un criterio para que el algoritmo sea determinista, y éste es el que reproduce exactamente las salidas de referencia de la cátedra.
+Cuando la salida dice primera o ultima moneda, se refiere a las puntas de la fila que va quedando, no a la posicion en la fila original. Si las dos puntas valen lo mismo se saca la ultima. Con este criterio la salida coincide con la de la catedra.
 
 ---
 
-## Resumen tecnico
+## Resumen
 
-* **Decisión Greedy local:** en cada turno de Sophia se comparan los dos extremos y se elige el mayor. En el turno de Mateo se comparan nuevamente los extremos disponibles y se le asigna el menor.
-* **Por qué es Greedy:** el óptimo local es la diferencia que cada ronda aporta al marcador, y la métrica global se descompone aditivamente en esas diferencias. Garantizar el signo de cada aporte local alcanza para garantizar el resultado global.
-* **Complejidad temporal:** O(n) y, más precisamente, Theta(n), donde n es la cantidad de monedas. El algoritmo procesa exactamente una moneda por iteración y cada decisión requiere operaciones de costo constante.
-* **Complejidad espacial:** O(n) considerando las listas de movimientos y de monedas asignadas a cada jugador. La memoria auxiliar necesaria únicamente para tomar las decisiones, mediante los dos índices, es O(1).
-* **Variabilidad de los valores:** no afecta el tiempo en el modelo de costo uniforme. Con enteros de precisión arbitraria, en cambio, comparar y sumar cuestan proporcional a la cantidad de dígitos, y el tiempo total pasa a ser Theta(n log v) con v el mayor valor. El experimento C lo comprueba empíricamente.
-
----
-
-## Reproducir experimentos
-
-Para reproducir los experimentos, mediciones de tiempos o gráficos por cuadrados mínimos detallados en el informe, se requiere crear y activar el entorno virtual e instalar `numpy` y `matplotlib` como se indicó anteriormente:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install matplotlib numpy
-```
-
-Luego, ejecutar:
-
-```bash
-python3 mediciones.py
-python3 variabilidad.py
-```
+* En cada turno se comparan las dos puntas. Sophia se queda con la mayor, y a Mateo le da la menor.
+* Tiempo: O(n), con n la cantidad de monedas. Se saca una moneda por vuelta y cada vuelta hace una comparacion y una suma.
+* Memoria: O(n) por las listas de movimientos y de monedas de cada uno. Para decidir solo hacen falta los dos indices de las puntas.
+* Variabilidad de los valores: no cambia el tiempo. El tiempo cambia cuando los valores son enormes, porque comparar y sumar numeros de muchos digitos tarda mas. Eso se ve en `grafico_c.png`.
