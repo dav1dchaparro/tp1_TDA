@@ -25,20 +25,20 @@ def prueba_exhaustiva(n_min=2, n_max=8):
 
         # Genera TODAS las permutaciones posibles de [1, 2, ..., n]
         for permutacion in permutations(valores):
-            suma_sofia, suma_mateo, _, _, _ = juego_monedas(list(permutacion))
+            suma_sophia, suma_mateo, _, _, _ = juego_monedas(list(permutacion))
 
             total += 1
 
-            if suma_sofia > suma_mateo:
+            if suma_sophia > suma_mateo:
                 victorias += 1
-            elif suma_sofia == suma_mateo:
+            elif suma_sophia == suma_mateo:
                 empates += 1
                 if primer_empate is None:
-                    primer_empate = (permutacion, suma_sofia, suma_mateo)
+                    primer_empate = (permutacion, suma_sophia, suma_mateo)
             else:
                 derrotas += 1
                 if primera_derrota is None:
-                    primera_derrota = (permutacion, suma_sofia, suma_mateo)
+                    primera_derrota = (permutacion, suma_sophia, suma_mateo)
 
         total_general += total
         victorias_general += victorias
