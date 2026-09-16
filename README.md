@@ -133,9 +133,9 @@ Ganancia de Mateo: 16
 
 ## 📊 Resumen Técnico
 
-* **Decisión Greedy Local:** En cada turno, el algoritmo evalúa la posición de los punteros actuales respecto a la paridad o índice objetivo calculado en la fase de inicialización global, reduciendo el tamaño del problema de manera lineal.
-* **Complejidad Temporal:** $\mathcal{O}(n)$, donde $n$ es la cantidad total de monedas. El algoritmo realiza una única pasada inicial de pre-cálculo y luego un ciclo de remoción con punteros que toma exactamente $n$ pasos elementales de tiempo constante $\mathcal{O}(1)$.
-* **Complejidad Espacial:** $\mathcal{O}(n)$ para almacenar el historial de pasos impreso al finalizar la ejecución ($\mathcal{O}(1)$ en memoria auxiliar de cómputo).
+* **Decisión Greedy Local:** En cada turno de Sophia se compara el valor de los dos extremos y se elige el mayor. En el turno de Mateo, Sophia compara nuevamente los extremos disponibles y le asigna el menor.
+* **Complejidad Temporal:** $\mathcal{O}(n)$ y, más precisamente, $\Theta(n)$, donde $n$ es la cantidad total de monedas. El algoritmo procesa exactamente una moneda por iteración y cada decisión requiere operaciones de costo constante $\mathcal{O}(1)$.
+* **Complejidad Espacial:** $\mathcal{O}(n)$ si se consideran las listas utilizadas para guardar movimientos y monedas asignadas a cada jugador. La memoria auxiliar necesaria únicamente para tomar las decisiones mediante los índices es $\mathcal{O}(1)$.
 
 ---
 
