@@ -89,8 +89,8 @@ def experimento_a():
     eje.set_ylabel("tiempo [ms]")
     eje.legend()
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_a_tiempo_vs_n.png", dpi=150, bbox_inches="tight")
-    print("   grafico_a_tiempo_vs_n.png")
+    figura.savefig("grafico_a.png", dpi=150, bbox_inches="tight")
+    print("   grafico_a.png")
 
 
 def experimento_b():
@@ -124,8 +124,8 @@ def experimento_b():
     eje.set_xlabel("desvio estandar de los valores")
     eje.set_ylabel("tiempo [ms]")
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_b_tiempo_vs_varianza.png", dpi=150, bbox_inches="tight")
-    print("   grafico_b_tiempo_vs_varianza.png")
+    figura.savefig("grafico_b.png", dpi=150, bbox_inches="tight")
+    print("   grafico_b.png")
 
 
 def experimento_c():
@@ -164,8 +164,8 @@ def experimento_c():
     eje.set_xlabel("tamano de los valores [bits]")
     eje.set_ylabel("tiempo [ms]")
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_c_tiempo_vs_magnitud.png", dpi=150, bbox_inches="tight")
-    print("   grafico_c_tiempo_vs_magnitud.png")
+    figura.savefig("grafico_c.png", dpi=150, bbox_inches="tight")
+    print("   grafico_c.png")
 
 
 if __name__ == "__main__":

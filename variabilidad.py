@@ -67,8 +67,8 @@ def experimento():
     eje.set_ylabel("ganancia de Sophia / total")
     eje.legend()
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_d_margen_vs_varianza.png", dpi=150, bbox_inches="tight")
-    print("   grafico_d_margen_vs_varianza.png")
+    figura.savefig("grafico_d.png", dpi=150, bbox_inches="tight")
+    print("   grafico_d.png")
 
 
 if __name__ == "__main__":
