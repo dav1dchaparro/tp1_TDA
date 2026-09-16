@@ -65,11 +65,48 @@ Cuando se termine de trabajar en el proyecto, el entorno virtual puede desactiva
 deactivate
 ```
 
-Para ejecutar el algoritmo utilizando un archivo de entrada con el set de monedas, corra el siguiente comando desde la raíz del repositorio:
+
+### Ejecutar el algoritmo principal
+
+Para ejecutar el algoritmo utilizando uno o más archivos de entrada con el set de monedas, correr el siguiente comando desde la raíz del repositorio:
 
 ```bash
 python monedas.py ruta/a/entrada.txt
 ```
+
+También pueden indicarse varios archivos:
+
+```bash
+python monedas.py entrada1.txt entrada2.txt entrada3.txt
+```
+
+### Ejecutar las pruebas funcionales
+
+```bash
+python pruebas.py
+```
+
+### Verificar los casos provistos por la cátedra
+
+El script recibe como argumento la carpeta que contiene los archivos `20.txt`, `25.txt`, `50.txt`, `100.txt`, `1000.txt`, `10000.txt` y `20000.txt`:
+
+```bash
+python verificar.py casos_catedra
+```
+
+### Ejecutar las mediciones
+
+Para realizar las mediciones de tiempos, los ajustes por cuadrados mínimos y generar los gráficos:
+
+```bash
+python mediciones.py
+```
+
+El script genera los archivos:
+
+* `grafico_a.png`: tiempo de ejecución según la cantidad de monedas.
+* `grafico_b.png`: tiempo según la variabilidad de los valores, manteniendo `n` fijo.
+* `grafico_c.png`: tiempo según la magnitud de los valores, manteniendo `n` fijo.
 
 ### 📂 Formato de los Archivos
 
