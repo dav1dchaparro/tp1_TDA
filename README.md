@@ -102,7 +102,7 @@ python3 pruebas.py
 
 ### Verificar los casos provistos por la cátedra
 
-El script recibe como argumento la carpeta que contiene los archivos `20.txt`, `25.txt`, `50.txt`, `100.txt`, `1000.txt`, `10000.txt` y `20000.txt`:
+El script recibe como argumento la carpeta que contiene los archivos `20.txt`, `25.txt`, `50.txt`, `100.txt`, `1000.txt`, `10000.txt` y `20000.txt`. Además lee `Resultados Esperados.txt` de la raíz del repositorio (o el archivo que se pase como segundo argumento) y compara contra la cátedra tanto la ganancia de Sophia como la lista de movimientos, turno por turno. Hay que correrlo desde la raíz:
 
 ```bash
 python3 verificar.py casos_catedra
