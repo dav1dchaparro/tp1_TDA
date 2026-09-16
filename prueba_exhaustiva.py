@@ -1,5 +1,5 @@
 from itertools import permutations
-from monedas import juego_monedas
+from tp1 import juego_monedas
 
 def prueba_exhaustiva(n_min=2, n_max=8):
     total_general = 0

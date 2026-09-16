@@ -1,6 +1,6 @@
 import random
 
-from monedas import juego_monedas
+from tp1 import juego_monedas
 
 fallas = 0
 

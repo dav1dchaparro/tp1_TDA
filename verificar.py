@@ -1,6 +1,6 @@
 import sys
 
-from monedas import juego_monedas, leer_monedas
+from tp1 import juego_monedas, leer_monedas
 
 # Las ganancias que trae el archivo "Resultados Esperados.txt" de la catedra.
 esperadas = {

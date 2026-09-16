@@ -6,7 +6,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
-from monedas import juego_monedas
+from tp1 import juego_monedas
 
 random.seed(12345)
 
