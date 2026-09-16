@@ -25,21 +25,21 @@ print("      caso        n      Sophia       Mateo    gana   referencia")
 for caso in ["20.txt", "25.txt", "50.txt", "100.txt",
              "1000.txt", "10000.txt", "20000.txt"]:
     monedas = leer_monedas(carpeta + "/" + caso)
-    suma_sofia, suma_mateo, mov, m_sofia, m_mateo = juego_monedas(monedas)
+    suma_sophia, suma_mateo, mov, m_sophia, m_mateo = juego_monedas(monedas)
 
-    if suma_sofia > suma_mateo:
+    if suma_sophia > suma_mateo:
         gana = "si"
     else:
         gana = "NO"
         fallas += 1
 
-    if suma_sofia == esperadas[caso]:
+    if suma_sophia == esperadas[caso]:
         comparacion = "igual"
     else:
-        comparacion = str(suma_sofia - esperadas[caso])
+        comparacion = str(suma_sophia - esperadas[caso])
 
     print("%10s %8d %11d %11d %7s %12s" % (
-        caso, len(monedas), suma_sofia, suma_mateo, gana, comparacion))
+        caso, len(monedas), suma_sophia, suma_mateo, gana, comparacion))
 
 print()
 if fallas == 0:
