@@ -139,13 +139,18 @@ Ganancia de Mateo: 16
 
 ---
 
-## 🛠️ Requisitos de Desarrollo (Opcional)
-Si desea reproducir los experimentos, mediciones de tiempos o gráficos por cuadrados mínimos detallados en el informe, se requiere contar con las siguientes librerías de análisis de datos:
+## 🛠️ Reproducir experimentos
+
+Para reproducir los experimentos, mediciones de tiempos o gráficos por cuadrados mínimos detallados en el informe, se requiere crear y activar el entorno virtual e instalar `numpy` y `matplotlib` como se indicó anteriormente:
 
 ```bash
-pip install numpy matplotlib
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install matplotlib numpy
 ```
-Para ejecutar el script de benchmarking (si aplica):
+
+Luego, ejecutar:
+
 ```bash
-python3 benchmark.py
+python mediciones.py
 ```
