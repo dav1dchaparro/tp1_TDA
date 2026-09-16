@@ -18,6 +18,7 @@ La estructura del repositorio incluye:
 * `pruebas.py`: conjunto de pruebas funcionales, aleatorias y casos borde para validar la implementación.
 * `verificar.py`: verificación del algoritmo contra los casos y resultados esperados provistos por la cátedra.
 * `mediciones.py`: mediciones de tiempos para distintos tamaños de entrada, ajuste por cuadrados mínimos y generación de gráficos.
+* `prueba_exhaustiva.py`: prueba exhaustiva de todas las permutaciones de los valores `1, ..., n` para `2 <= n <= 8`.
 * `informe.pdf`: Informe académico autocontenido detallando el análisis, la demostración de optimalidad y los análisis de complejidad temporal/espacial.
 * `casos_catedra/`: Carpeta con sets de datos de prueba provistos por la cátedra.
 
@@ -25,7 +26,7 @@ La estructura del repositorio incluye:
 
 ## 🚀 Instrucciones de Ejecución
 
-El programa está desarrollado en **Python 3**. La ejecución principal de `monedas.py`, `pruebas.py` y `verificar.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
+El programa está desarrollado en **Python 3**. La ejecución principal de `monedas.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
 
 ### Opción rápida: copiar y ejecutar todo junto
 
@@ -92,6 +93,14 @@ El script recibe como argumento la carpeta que contiene los archivos `20.txt`, `
 
 ```bash
 python verificar.py casos_catedra
+```
+
+### Ejecutar la prueba exhaustiva
+
+La prueba exhaustiva genera todas las permutaciones posibles de los valores `1, ..., n` para `n` entre 2 y 8 y verifica que Sophia gane en cada caso:
+
+```bash
+python prueba_exhaustiva.py
 ```
 
 ### Ejecutar las mediciones
