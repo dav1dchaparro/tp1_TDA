@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Punto de entrada ejecutable: ./tp1 entrada.txt [entrada2.txt ...]"""
+
+from tp1 import main
+
+if __name__ == "__main__":
+    main()

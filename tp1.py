@@ -49,7 +49,7 @@ def leer_monedas(nombre_archivo):
     return monedas
 
 
-if __name__ == "__main__":
+def main():
     for nombre_archivo in sys.argv[1:]:
         monedas = leer_monedas(nombre_archivo)
         suma_sophia, suma_mateo, movimientos, monedas_sophia, monedas_mateo = juego_monedas(monedas)
@@ -61,3 +61,7 @@ if __name__ == "__main__":
         print("Ganancia de Sophia:", suma_sophia)
         print("Ganancia de Mateo:", suma_mateo)
         print()
+
+
+if __name__ == "__main__":
+    main()
