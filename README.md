@@ -11,7 +11,7 @@
 ## 📌 Descripción del Proyecto
 Este proyecto contiene la resolución del **Trabajo Práctico 1** de la materia. El objetivo es analizar, demostrar e implementar un **Algoritmo Greedy** óptimo para resolver el problema de la fila de monedas entre Sophia y Mateo. 
 
-Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo utiliza un enfoque basado en el análisis de **paridades e índices estratégicos** para garantizar de forma matemática que Sophia **gane o empate siempre**, independientemente de si la cantidad de monedas (\(n\)) es par o impar.
+Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo implementado utiliza la siguiente regla Greedy: **en su propio turno Sophia elige el mayor de los dos extremos disponibles y, en el turno de Mateo, le asigna el menor de los dos extremos disponibles**. Bajo la hipótesis del problema de que los valores de las monedas son distintos, esta estrategia garantiza que Sophia gane.
 
 La estructura del repositorio incluye:
 * `tp1.py`: Código fuente principal con la lógica del algoritmo greedy optimizado.
