@@ -1,17 +1,23 @@
 # Trabajo Práctico 1: Los Algoritmos Greedy son juegos de niños
 
 ## Integrantes
-* **Nicolas Llosas** - 105397 - [Email](mailto:nllosas@fi.uba.ar)
-* **Joaquín Acevedo** - 89863 - [Email](mailto:racevedo@fi.uba.ar)
-* **Juan David Chaparro** - Padron/Legajo - [Email](mailto:jchaparro@fi.uba.ar)
+* Nicolas Llosas - 105397 - [Email](mailto:nllosas@fi.uba.ar)
+* Joaquín Acevedo - 89863 - [Email](mailto:racevedo@fi.uba.ar)
+* Juan David Chaparro - Padron/Legajo - [Email](mailto:jchaparro@fi.uba.ar)
 
 
 ---
 
-## 📌 Descripción del Proyecto
-Este proyecto contiene la resolución del **Trabajo Práctico 1** de la materia. El objetivo es analizar, demostrar e implementar un **Algoritmo Greedy** óptimo para resolver el problema de la fila de monedas entre Sophia y Mateo. 
+## Descripcion del proyecto
+Este proyecto contiene la resolución del Trabajo Práctico 1 de la materia. El objetivo es analizar, demostrar e implementar un algoritmo Greedy óptimo para resolver el problema de la fila de monedas entre Sophia y Mateo.
 
-Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo implementado utiliza la siguiente regla Greedy: **en su propio turno Sophia elige el mayor de los dos extremos disponibles y, en el turno de Mateo, le asigna el menor de los dos extremos disponibles**. Bajo la hipótesis del problema de que los valores de las monedas son distintos, esta estrategia garantiza que Sophia gane.
+Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo implementado utiliza la siguiente regla Greedy: en su propio turno Sophia elige el mayor de los dos extremos disponibles y, en el turno de Mateo, le asigna el menor de los dos extremos disponibles. Bajo la hipótesis del problema de que los valores de las monedas son distintos, esta estrategia garantiza que Sophia gane.
+
+Conviene aclarar qué quiere decir óptimo acá, porque se presta a confusión. Óptimo quiere decir que asegura la victoria, que es lo que pide el enunciado. No quiere decir que maximice la ganancia de Sophia: con la entrada `3;1;2;4;5` el algoritmo le saca 11 sobre un total de 15, y el máximo alcanzable era 12.
+
+El teorema completo es: con valores positivos, y además n impar o los n valores todos distintos, se garantiza que Sophia saque estrictamente más que Mateo. Sin ninguna hipótesis extra se garantiza que saque al menos lo mismo, o sea que Sophia nunca pierde.
+
+Con n par y valores repetidos puede haber empate. Algunos empates son inevitables para cualquier estrategia: la familia `x; y; ...; y; x` con n par y x <= y, que incluye el caso de monedas todas iguales que el enunciado permite descartar. Otros sí serían evitables, por ejemplo `1;2;3;3;2;1`, donde el algoritmo termina 6 a 6 y existe un reparto 7 a 5.
 
 La estructura del repositorio incluye:
 * `tp1.py`: implementación principal del algoritmo Greedy y lectura de los archivos de entrada.
@@ -24,9 +30,9 @@ La estructura del repositorio incluye:
 
 ---
 
-## 🚀 Instrucciones de Ejecución
+## Instrucciones de ejecucion
 
-El programa está desarrollado en **Python 3**. La ejecución principal de `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
+El programa está desarrollado en Python 3. La ejecución principal de `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
 
 ### Opción rápida: copiar y ejecutar todo junto
 
@@ -123,7 +129,7 @@ El script genera los archivos:
 * `grafico_b_tiempo_vs_varianza.png`: tiempo según la variabilidad de los valores, manteniendo `n` fijo.
 * `grafico_c_tiempo_vs_magnitud.png`: tiempo según la magnitud de los valores, manteniendo `n` fijo.
 
-### 📂 Formato de los Archivos
+### Formato de los archivos
 
 #### Archivo de Entrada (`entrada.txt`)
 El archivo de entrada debe contener los valores de las monedas separados por punto y coma (`;`). También pueden incluirse líneas de comentario que comiencen con `#`.
@@ -146,15 +152,17 @@ Ganancia de Mateo: 14
 
 ---
 
-## 📊 Resumen Técnico
+## Resumen tecnico
 
-* **Decisión Greedy Local:** En cada turno de Sophia se compara el valor de los dos extremos y se elige el mayor. En el turno de Mateo, Sophia compara nuevamente los extremos disponibles y le asigna el menor.
-* **Complejidad Temporal:** $\mathcal{O}(n)$ y, más precisamente, $\Theta(n)$, donde $n$ es la cantidad total de monedas. El algoritmo procesa exactamente una moneda por iteración y cada decisión requiere operaciones de costo constante $\mathcal{O}(1)$.
-* **Complejidad Espacial:** $\mathcal{O}(n)$ si se consideran las listas utilizadas para guardar movimientos y monedas asignadas a cada jugador. La memoria auxiliar necesaria únicamente para tomar las decisiones mediante los índices es $\mathcal{O}(1)$.
+La decisión Greedy es local: en cada turno de Sophia se compara el valor de los dos extremos y se elige el mayor, y en el turno de Mateo se compara de nuevo y se le asigna el menor.
+
+La complejidad temporal es O(n), y más precisamente Theta(n), donde n es la cantidad total de monedas. El algoritmo procesa exactamente una moneda por iteración y cada decisión son unas pocas comparaciones, que cuestan O(1).
+
+La complejidad espacial es O(n) si se cuentan las listas de movimientos y de monedas de cada jugador. La memoria auxiliar que hace falta solo para decidir, que son los dos índices, es O(1).
 
 ---
 
-## 🛠️ Reproducir experimentos
+## Reproducir experimentos
 
 Para reproducir los experimentos, mediciones de tiempos o gráficos por cuadrados mínimos detallados en el informe, se requiere crear y activar el entorno virtual e instalar `numpy` y `matplotlib` como se indicó anteriormente:
 
