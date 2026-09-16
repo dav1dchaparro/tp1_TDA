@@ -2,7 +2,7 @@
 
 ## Integrantes
 * **Nicolas Llosas** - 105397 - [Email](mailto:nllosas@fi.uba.ar)
-* **Joaquín Acevedo** - Padron/Legajo - [Email](mailto:racevedo@fi.uba.ar)
+* **Joaquín Acevedo** - 89863 - [Email](mailto:racevedo@fi.uba.ar)
 * **Juan David Chaparro** - Padron/Legajo - [Email](mailto:jchaparro@fi.uba.ar)
 
 
