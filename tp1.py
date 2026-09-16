@@ -2,39 +2,44 @@ import sys
 
 
 def juego_monedas(monedas):
-    i = 0
-    k = len(monedas) - 1
-    suma_sophia = 0
-    suma_mateo = 0
+    primera = 0
+    ultima = len(monedas) - 1
+
+    ganancia_sophia = 0
+    ganancia_mateo = 0
     movimientos = []
     monedas_sophia = []
     monedas_mateo = []
-    contador = 0
-    while i <= k:
-        if contador % 2 == 0:  # Turno de Sophia
-            if monedas[i] > monedas[k]:
-                suma_sophia += monedas[i]
-                monedas_sophia.append(monedas[i])
+
+    turno_sophia = True
+
+    while primera <= ultima:
+        if turno_sophia:
+            if monedas[primera] > monedas[ultima]:
+                ganancia_sophia += monedas[primera]
+                monedas_sophia.append(monedas[primera])
                 movimientos.append("Primera moneda para Sophia")
-                i += 1
+                primera += 1
             else:
-                suma_sophia += monedas[k]
-                monedas_sophia.append(monedas[k])
+                ganancia_sophia += monedas[ultima]
+                monedas_sophia.append(monedas[ultima])
                 movimientos.append("Última moneda para Sophia")
-                k -= 1
-        else:                  # Turno de Mateo (Sophia elige la más chica)
-            if monedas[i] < monedas[k]:
-                suma_mateo += monedas[i]
-                monedas_mateo.append(monedas[i])
+                ultima -= 1
+        else:
+            if monedas[primera] < monedas[ultima]:
+                ganancia_mateo += monedas[primera]
+                monedas_mateo.append(monedas[primera])
                 movimientos.append("Primera moneda para Mateo")
-                i += 1
+                primera += 1
             else:
-                suma_mateo += monedas[k]
-                monedas_mateo.append(monedas[k])
+                ganancia_mateo += monedas[ultima]
+                monedas_mateo.append(monedas[ultima])
                 movimientos.append("Última moneda para Mateo")
-                k -= 1
-        contador += 1
-    return suma_sophia, suma_mateo, movimientos, monedas_sophia, monedas_mateo
+                ultima -= 1
+
+        turno_sophia = not turno_sophia
+
+    return ganancia_sophia, ganancia_mateo, movimientos, monedas_sophia, monedas_mateo
 
 
 def leer_monedas(nombre_archivo):
@@ -43,23 +48,23 @@ def leer_monedas(nombre_archivo):
         for linea in archivo:
             if linea.startswith("#"):
                 continue
-            for parte in linea.split(";"):
-                if parte.strip() != "":
-                    monedas.append(int(parte))
+            for valor in linea.split(";"):
+                if valor.strip() != "":
+                    monedas.append(int(valor))
     return monedas
 
 
 def main():
     for nombre_archivo in sys.argv[1:]:
         monedas = leer_monedas(nombre_archivo)
-        suma_sophia, suma_mateo, movimientos, monedas_sophia, monedas_mateo = juego_monedas(monedas)
+        ganancia_sophia, ganancia_mateo, movimientos, monedas_sophia, monedas_mateo = juego_monedas(monedas)
 
         print(nombre_archivo)
         print("; ".join(movimientos))
         print("Monedas de Sophia:", monedas_sophia)
         print("Monedas de Mateo:", monedas_mateo)
-        print("Ganancia de Sophia:", suma_sophia)
-        print("Ganancia de Mateo:", suma_mateo)
+        print("Ganancia de Sophia:", ganancia_sophia)
+        print("Ganancia de Mateo:", ganancia_mateo)
         print()
 
 
