@@ -78,7 +78,7 @@ def experimento_a():
         (np.log2(tamanios[-1]) / np.log2(tamanios[0]) - 1) * 100))
 
     figura, eje = plt.subplots(figsize=(8, 5))
-    eje.plot(tamanios, tiempos, "o", color="#1D9E75", label="mediciones")
+    eje.plot(tamanios, tiempos, "o", color="blue", label="mediciones")
     n = np.array(tamanios, dtype=float)
     for nombre, modelo in modelos:
         coeficientes, error = ajustar(tamanios, tiempos, modelo)
@@ -89,8 +89,8 @@ def experimento_a():
     eje.set_ylabel("tiempo [ms]")
     eje.legend()
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_a.png", dpi=150, bbox_inches="tight")
-    print("   grafico_a.png")
+    figura.savefig("grafico_a_tiempo_vs_n.png", dpi=150, bbox_inches="tight")
+    print("   grafico_a_tiempo_vs_n.png")
 
 
 def experimento_b():
@@ -118,14 +118,14 @@ def experimento_b():
         (max(tiempos) - min(tiempos)) / np.mean(tiempos) * 100))
 
     figura, eje = plt.subplots(figsize=(8, 5))
-    eje.plot(desvios, tiempos, "o-", color="#534AB7")
+    eje.plot(desvios, tiempos, "o-", color="green")
     eje.set_ylim(0, max(tiempos) * 1.4)
     eje.set_title("Tiempo segun la varianza de los valores (n = %d)" % n)
     eje.set_xlabel("desvio estandar de los valores")
     eje.set_ylabel("tiempo [ms]")
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_b.png", dpi=150, bbox_inches="tight")
-    print("   grafico_b.png")
+    figura.savefig("grafico_b_tiempo_vs_varianza.png", dpi=150, bbox_inches="tight")
+    print("   grafico_b_tiempo_vs_varianza.png")
 
 
 def experimento_c():
@@ -154,20 +154,21 @@ def experimento_c():
             exponente, bits[-1], tiempos[-1]))
 
     print()
-    print("   de valores chicos a valores de 2000 bits: %.2f veces mas lento" % (
-        tiempos[-1] / tiempos[0]))
+    print("   de %d bits a %d bits: %.2f veces mas lento" % (
+        bits[0], bits[-1], tiempos[-1] / tiempos[0]))
 
     figura, eje = plt.subplots(figsize=(8, 5))
-    eje.plot(bits, tiempos, "o-", color="#D85A30")
+    eje.plot(bits, tiempos, "o-", color="red")
     eje.set_xscale("log", base=2)
     eje.set_title("Tiempo segun la magnitud de los valores (n = %d)" % n)
     eje.set_xlabel("tamano de los valores [bits]")
     eje.set_ylabel("tiempo [ms]")
     eje.grid(alpha=0.3)
-    figura.savefig("grafico_c.png", dpi=150, bbox_inches="tight")
-    print("   grafico_c.png")
+    figura.savefig("grafico_c_tiempo_vs_magnitud.png", dpi=150, bbox_inches="tight")
+    print("   grafico_c_tiempo_vs_magnitud.png")
 
 
-experimento_a()
-experimento_b()
-experimento_c()
+if __name__ == "__main__":
+    experimento_a()
+    experimento_b()
+    experimento_c()
