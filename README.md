@@ -14,19 +14,19 @@ Este proyecto contiene la resolución del **Trabajo Práctico 1** de la materia.
 Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo implementado utiliza la siguiente regla Greedy: **en su propio turno Sophia elige el mayor de los dos extremos disponibles y, en el turno de Mateo, le asigna el menor de los dos extremos disponibles**. Bajo la hipótesis del problema de que los valores de las monedas son distintos, esta estrategia garantiza que Sophia gane.
 
 La estructura del repositorio incluye:
-* `monedas.py`: implementación principal del algoritmo Greedy y lectura de los archivos de entrada.
+* `tp1.py`: implementación principal del algoritmo Greedy y lectura de los archivos de entrada.
+* `tp1`: ejecutable que llama a `tp1.py`, para poder correr `./tp1 entrada.txt`.
 * `pruebas.py`: conjunto de pruebas funcionales, aleatorias y casos borde para validar la implementación.
 * `verificar.py`: verificación del algoritmo contra los casos y resultados esperados provistos por la cátedra.
 * `mediciones.py`: mediciones de tiempos para distintos tamaños de entrada, ajuste por cuadrados mínimos y generación de gráficos.
 * `prueba_exhaustiva.py`: prueba exhaustiva de todas las permutaciones de los valores `1, ..., n` para `2 <= n <= 8`.
-* `informe.pdf`: Informe académico autocontenido detallando el análisis, la demostración de optimalidad y los análisis de complejidad temporal/espacial.
 * `casos_catedra/`: Carpeta con sets de datos de prueba provistos por la cátedra.
 
 ---
 
 ## 🚀 Instrucciones de Ejecución
 
-El programa está desarrollado en **Python 3**. La ejecución principal de `monedas.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
+El programa está desarrollado en **Python 3**. La ejecución principal de `tp1.py`, `pruebas.py`, `verificar.py` y `prueba_exhaustiva.py` no requiere dependencias externas. Para `mediciones.py` se utilizan las librerías `numpy` y `matplotlib`.
 
 ### Opción rápida: copiar y ejecutar todo junto
 
@@ -34,7 +34,7 @@ Se pueden ejecutar estos comandos directamente:
 
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install matplotlib numpy
+python3 -m pip install matplotlib numpy
 
 o bien, por separado, según:
 
@@ -55,7 +55,7 @@ source .venv/bin/activate
 Con el entorno virtual activado, instalar las dependencias necesarias para las mediciones y los gráficos:
 
 ```bash
-python -m pip install matplotlib numpy
+python3 -m pip install matplotlib numpy
 ```
 
 `matplotlib` se utiliza para generar los gráficos de las mediciones de tiempo, mientras que `numpy` se utiliza para los cálculos numéricos y los ajustes por cuadrados mínimos.
@@ -72,19 +72,25 @@ deactivate
 Para ejecutar el algoritmo utilizando uno o más archivos de entrada con el set de monedas, correr el siguiente comando desde la raíz del repositorio:
 
 ```bash
-python monedas.py ruta/a/entrada.txt
+python3 tp1.py ruta/a/entrada.txt
+```
+
+También puede usarse el ejecutable, que hace lo mismo:
+
+```bash
+./tp1 ruta/a/entrada.txt
 ```
 
 También pueden indicarse varios archivos:
 
 ```bash
-python monedas.py entrada1.txt entrada2.txt entrada3.txt
+python3 tp1.py entrada1.txt entrada2.txt entrada3.txt
 ```
 
 ### Ejecutar las pruebas funcionales
 
 ```bash
-python pruebas.py
+python3 pruebas.py
 ```
 
 ### Verificar los casos provistos por la cátedra
@@ -92,7 +98,7 @@ python pruebas.py
 El script recibe como argumento la carpeta que contiene los archivos `20.txt`, `25.txt`, `50.txt`, `100.txt`, `1000.txt`, `10000.txt` y `20000.txt`:
 
 ```bash
-python verificar.py casos_catedra
+python3 verificar.py casos_catedra
 ```
 
 ### Ejecutar la prueba exhaustiva
@@ -100,7 +106,7 @@ python verificar.py casos_catedra
 La prueba exhaustiva genera todas las permutaciones posibles de los valores `1, ..., n` para `n` entre 2 y 8 y verifica que Sophia gane en cada caso:
 
 ```bash
-python prueba_exhaustiva.py
+python3 prueba_exhaustiva.py
 ```
 
 ### Ejecutar las mediciones
@@ -108,14 +114,14 @@ python prueba_exhaustiva.py
 Para realizar las mediciones de tiempos, los ajustes por cuadrados mínimos y generar los gráficos:
 
 ```bash
-python mediciones.py
+python3 mediciones.py
 ```
 
 El script genera los archivos:
 
-* `grafico_a.png`: tiempo de ejecución según la cantidad de monedas.
-* `grafico_b.png`: tiempo según la variabilidad de los valores, manteniendo `n` fijo.
-* `grafico_c.png`: tiempo según la magnitud de los valores, manteniendo `n` fijo.
+* `grafico_a_tiempo_vs_n.png`: tiempo de ejecución según la cantidad de monedas.
+* `grafico_b_tiempo_vs_varianza.png`: tiempo según la variabilidad de los valores, manteniendo `n` fijo.
+* `grafico_c_tiempo_vs_magnitud.png`: tiempo según la magnitud de los valores, manteniendo `n` fijo.
 
 ### 📂 Formato de los Archivos
 
@@ -131,11 +137,11 @@ El programa imprimirá de forma cronológica cada una de las decisiones tomadas 
 
 ```text
 entrada.txt
-Última moneda para Sophia; Primera moneda para Mateo; Última moneda para Sophia; Primera moneda para Mateo; Última moneda para Sophia; Primera moneda para Mateo
-Monedas de Sophia: [20, 8, 25]
-Monedas de Mateo: [10, 5, 1]
-Ganancia de Sophia: 53
-Ganancia de Mateo: 16
+Última moneda para Sophia; Última moneda para Mateo; Primera moneda para Sophia; Última moneda para Mateo; Primera moneda para Sophia; Última moneda para Mateo
+Monedas de Sophia: [20, 10, 25]
+Monedas de Mateo: [8, 1, 5]
+Ganancia de Sophia: 55
+Ganancia de Mateo: 14
 ```
 
 ---
@@ -155,11 +161,11 @@ Para reproducir los experimentos, mediciones de tiempos o gráficos por cuadrado
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install matplotlib numpy
+python3 -m pip install matplotlib numpy
 ```
 
 Luego, ejecutar:
 
 ```bash
-python mediciones.py
+python3 mediciones.py
 ```
