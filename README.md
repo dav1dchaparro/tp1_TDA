@@ -14,9 +14,12 @@ Este proyecto contiene la resolución del **Trabajo Práctico 1** de la materia.
 Dado que Sophia controla tanto sus decisiones como las de su hermano Mateo, el algoritmo implementado utiliza la siguiente regla Greedy: **en su propio turno Sophia elige el mayor de los dos extremos disponibles y, en el turno de Mateo, le asigna el menor de los dos extremos disponibles**. Bajo la hipótesis del problema de que los valores de las monedas son distintos, esta estrategia garantiza que Sophia gane.
 
 La estructura del repositorio incluye:
-* `tp1.py`: Código fuente principal con la lógica del algoritmo greedy optimizado.
+* `monedas.py`: implementación principal del algoritmo Greedy y lectura de los archivos de entrada.
+* `pruebas.py`: conjunto de pruebas funcionales, aleatorias y casos borde para validar la implementación.
+* `verificar.py`: verificación del algoritmo contra los casos y resultados esperados provistos por la cátedra.
+* `mediciones.py`: mediciones de tiempos para distintos tamaños de entrada, ajuste por cuadrados mínimos y generación de gráficos.
 * `informe.pdf`: Informe académico autocontenido detallando el análisis, la demostración de optimalidad y los análisis de complejidad temporal/espacial.
-* `tests/`: Carpeta con sets de datos de prueba provistos y propios.
+* `casos_catedra/`: Carpeta con sets de datos de prueba provistos por la cátedra.
 
 ---
 
